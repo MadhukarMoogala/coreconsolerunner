@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "CoreConsoleRunner": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\ACAD\\watt\\AutoCAD 2026\\accoreconsole.exe",
+      "workingDirectory": "D:\\Work\\repo\\CoreConsoleTestRunner\\CoreConsoleRunner"
+    },
+    "Runner": {
+      "commandName": "Executable",
+      "executablePath": "D:\\ACAD\\watt\\AutoCAD 2026\\accoreconsole.exe",
+      "commandLineArgs": "/i D:\\Work\\repo\\CoreConsoleTestRunner\\CoreConsoleRunner\\TestDyn.dwg /s D:\\Work\\repo\\CoreConsoleTestRunner\\CoreConsoleRunner\\TestRunner.scr"
+    }
+  }
+}

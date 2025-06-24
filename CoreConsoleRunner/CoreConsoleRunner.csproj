@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>    
+        <RootNamespace>CoreConsoleRunner</RootNamespace>
+        <AssemblyName>CoreConsoleRunner</AssemblyName>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+        <Platforms>AnyCPU;x64</Platforms>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="AutoCAD.NET.Core" Version="25.1.0" />
+      <PackageReference Include="ExtentReports" Version="5.0.4" />
+      <PackageReference Include="NUnit" Version="4.3.2" />
+      <PackageReference Include="NUnitLite" Version="4.3.2" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="accoremgd">            
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="acdbmgd">            
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>  
+</Project>
