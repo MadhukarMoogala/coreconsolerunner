@@ -1,0 +1,7 @@
+SECURELOAD
+0
+netload "D:\Work\repo\CoreConsoleTestRunner\CoreConsoleRunner\bin\x64\Debug\net8.0-windows\win-x64\CoreConsoleRunner.dll"
+RunCADtests
+QUIT
+_Y
+

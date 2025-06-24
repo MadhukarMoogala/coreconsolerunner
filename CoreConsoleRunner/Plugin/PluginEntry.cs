@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.AutoCAD.Runtime;
-using CoreConsoleRunner;
-[assembly: ExtensionApplication(typeof(NUnitRunnerApp))]
+using CoreConsoleRunner.Plugin;
+[assembly: ExtensionApplication(typeof(PluginEntry))]
 
-namespace CoreConsoleRunner
+namespace CoreConsoleRunner.Plugin
 {
-    public class NUnitRunnerApp : IExtensionApplication
+    public class PluginEntry : IExtensionApplication
     {
         public void Initialize()
         {
