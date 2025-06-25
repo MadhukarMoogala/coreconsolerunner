@@ -1,15 +1,21 @@
-﻿using System;
+﻿using Autodesk.AutoCAD.Runtime;
+using CoreConsoleRunner.Plugin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
-using Autodesk.AutoCAD.Runtime;
-using CoreConsoleRunner.Plugin;
 [assembly: ExtensionApplication(typeof(PluginEntry))]
 
 namespace CoreConsoleRunner.Plugin
 {
+    /// <summary>
+    /// Attaches or allocates a console window (with AttachConsole(-1) or AllocConsole()).
+    /// This helps see Console.WriteLine() outputs in a traditional AutoCAD session(UI), especially when debugging inside AutoCAD itself.
+    /// </summary>
+
     public class PluginEntry : IExtensionApplication
     {
         public void Initialize()

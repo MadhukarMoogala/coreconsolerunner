@@ -15,11 +15,11 @@ namespace CoreConsoleRunner.TestInfrastructure
     {
         private static ExtentReports _extent;
         public static ExtentTest CurrentTest { get; set; }
-
+        public static string ReportPath => Path.Combine(Directory.GetCurrentDirectory(), "Report.html");
         static TestReport()
         {
-            string reportPath = Path.Combine(Directory.GetCurrentDirectory(), "Report.html");
-            var htmlReporter = new ExtentSparkReporter(reportPath);
+          
+            var htmlReporter = new ExtentSparkReporter(ReportPath);
 
             htmlReporter.Config.DocumentTitle = "AutoCAD Core Console Tests";
             htmlReporter.Config.ReportName = "Regression Report";

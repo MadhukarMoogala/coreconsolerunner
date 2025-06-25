@@ -2,22 +2,36 @@
 using NUnit.Framework;
 using System;
 using System.IO;
-using System.Linq;
+
 
 namespace CoreConsoleRunner.TestInfrastructure
 {
     [TestFixture]
     public abstract class DrawingTestBase
     {
+        public static string DrawingFilePath { get; set; }
         protected Database testDb;
         protected Transaction trans;
 
         [OneTimeSetUp]
         public void Init()
         {
-            string dwgPath = GetDrawingPathFromArgs();
-            testDb = HostApplicationServices.WorkingDatabase ??
-                     DatabaseUtility.WorkingDatabaseManager.InitializeWorkingDatabase(dwgPath);
+            if (string.IsNullOrEmpty(DrawingFilePath) || !File.Exists(DrawingFilePath))
+                throw new FileNotFoundException("Drawing file not provided or invalid.");
+
+            //check if the working database has valid named drawing
+            if (HostApplicationServices.WorkingDatabase != null &&                 
+                HostApplicationServices.WorkingDatabase.Filename.Equals(DrawingFilePath, StringComparison.OrdinalIgnoreCase))
+            {
+                //use the existing working database
+                testDb = HostApplicationServices.WorkingDatabase;
+            }
+            else
+            {
+                //initialize a new working database from the provided drawing file
+               testDb = DatabaseUtility.WorkingDatabaseManager.InitializeWorkingDatabase(DrawingFilePath);
+            }
+            
         }
 
         [SetUp]
@@ -30,13 +44,6 @@ namespace CoreConsoleRunner.TestInfrastructure
 
         [OneTimeTearDown]
         public void Cleanup() =>
-            testDb.Dispose();
-
-        private static string GetDrawingPathFromArgs()
-        {
-            string[] args = Environment.GetCommandLineArgs();
-            return args.FirstOrDefault(arg => arg.EndsWith(".dwg", StringComparison.OrdinalIgnoreCase))
-                ?? throw new ArgumentException("DWG path not provided.");
-        }
+            testDb?.Dispose();
     }
 }
